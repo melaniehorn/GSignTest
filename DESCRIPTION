@@ -1,0 +1,27 @@
+Package: RobRegTest
+Type: Package
+Title: Robust Tests for Regression-Parameters via Sign Depth
+Version: 1.0.2
+Author: Melanie Horn
+Maintainer: Melanie Horn <mhorn@statistik.tu-dortmund.de>
+Description: The Simplicial Depth is a robust measure of fitness for 
+  a regression model. One can use it also for testing whether a given 
+  parameter vector of a regression model fits to some data. The Sign 
+  Depth needs a sorting of the data, which can be difficult with 
+  multivariate data. This package provides different strategies for
+  sorting multivariate data (random, nondominated-sorting, sorting 
+  via scalarization, shortest hamiltonian path, ...) and calculates 
+  robust tests for regression-parameters via Sign Depth.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+LinkingTo: Rcpp
+Imports: Rcpp,
+    checkmate,
+    TSP,
+    nsga2R,
+    ggplot2
+RoxygenNote: 6.0.1
+Depends:
+    R (>= 2.10)
+Suggests: testthat
