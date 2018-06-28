@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{calcDepth}
 \alias{calcDepth}
-\title{Simplicial k-Depth}
+\title{k Sign Depth}
 \usage{
 calcDepth(res, k)
 }
@@ -17,7 +17,7 @@ the k of the depth-formula}
 [\code{numeric(1)}] the calculated k-Depth of res.
 }
 \description{
-\code{calcDepth} calculates the k-Depth of a given vector of residuals.
+\code{calcDepth} calculates the k Sign Depth of a given vector of residuals.
 }
 \examples{
 calcDepth(rnorm(10), 3)

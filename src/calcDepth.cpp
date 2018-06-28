@@ -18,7 +18,7 @@ int signC(double x) {
 // calcSwitchSign: helper-function: determines if a vector has alternating signes
 // input: NumericVector res: The residuals
 //        IntegerVector ind: the indices you want to look at (ind has length k)
-// output: double: 1 if res[ind] has alternating signes, 0 otherwise
+// output: double: 1 if res[ind] has alternating signs, 0 otherwise
 double calcSwitchSign(NumericVector res, IntegerVector ind) {
   int k = ind.size();
   double counter = 1;
@@ -58,10 +58,10 @@ IntegerVector calcNextVec(IntegerVector oldV, int n, int k) {
 
 // THE MAIN FUNCTION
 
-//' @title Simplicial k-Depth
+//' @title k Sign Depth
 //'
 //' @description
-//' \code{calcDepth} calculates the k-Depth of a given vector of residuals.
+//' \code{calcDepth} calculates the k Sign Depth of a given vector of residuals.
 //'
 //' @param res [\code{numeric}]\cr
 //'   numeric vector of residuals

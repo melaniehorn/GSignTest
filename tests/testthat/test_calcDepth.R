@@ -16,7 +16,7 @@ test_that("worst", {
   expect_equal(calcDepth(rep(c(-1, 1), 10), 2), qdepth(1, 20, k = 2))
   expect_equal(calcDepth(rep(c(-1, 1), 10), 3), qdepth(1, 20, k = 3))
   expect_equal(calcDepth(rep(c(-1, 1), 10), 4), qdepth(1, 20, k = 4))
-  #expect_equal(calcDepth(rep(c(-1, 1), 10), 5), qdepth(1, 20, k = 5))
+  expect_equal(calcDepth(rep(c(-1, 1), 10), 5), qdepth(1, 20, k = 5))
 })
 
 test_that("error", {
