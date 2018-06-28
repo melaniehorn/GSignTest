@@ -17,3 +17,26 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// calcSimpDepth
+double calcSimpDepth(NumericVector res, int k);
+RcppExport SEXP _RobRegTest_calcSimpDepth(SEXP resSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type res(resSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(calcSimpDepth(res, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_RobRegTest_calcDepth", (DL_FUNC) &_RobRegTest_calcDepth, 2},
+    {"_RobRegTest_calcSimpDepth", (DL_FUNC) &_RobRegTest_calcSimpDepth, 2},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_RobRegTest(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
+}
