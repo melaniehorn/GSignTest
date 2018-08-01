@@ -104,7 +104,7 @@ depth.test.formula <- function(formula, data, params, k, ...) {
   }
 
   sorted <- multiSorting(as.data.frame(mm), ...)$inds
-  mm <- mm[sorted, ]
+  mm <- mm[sorted, , drop = FALSE]
   mr <- mr[sorted]
 
   res <- mm %*% params - mr
