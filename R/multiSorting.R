@@ -57,6 +57,9 @@
 #'     The \code{p}-argument of \code{\link[stats]{dist}}. Default: \code{2}.}
 #'   \item{\code{path} [\code{character(1)}]}{For method \code{"shp"}:\cr
 #'     Path to the executable code of the Concorde solver. Default: The working directory.}
+#'   \item{\code{prec} [\code{numeric(1)}]}{For method \code{"shp"}: \cr
+#'     The precision, i.e. the number of decimal places using for the distances between two points.
+#'     Default: \code{6}}.
 #' }
 #'
 #' @note
@@ -128,7 +131,8 @@ multiSorting <- function(data, method = "identity", control = list()) {
     path <- if(is.null(control[["path"]])) getwd() else control[["path"]]
     dist.method <- if(is.null(control[["dist.method"]])) "euclidean" else control[["dist.method"]]
     p <- if(is.null(control[["p"]])) 2 else control[["p"]]
-    inds <- makeTSP(data, method, path, dist.method, p)
+    prec <- if(is.null(control[["prec"]])) 6 else control[["prec"]]
+    inds <- makeTSP(data, method, path, dist.method, p, prec)
   }
 
   res <- list(sortedData = data[inds, ], inds = inds)

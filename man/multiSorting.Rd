@@ -68,6 +68,9 @@ The \code{control} argument is a list that can supply any of the following compo
     The \code{p}-argument of \code{\link[stats]{dist}}. Default: \code{2}.}
   \item{\code{path} [\code{character(1)}]}{For method \code{"shp"}:\cr
     Path to the executable code of the Concorde solver. Default: The working directory.}
+  \item{\code{prec} [\code{numeric(1)}]}{For method \code{"shp"}: \cr
+    The precision, i.e. the number of decimal places using for the distances between two points.
+    Default: \code{6}}.
 }
 }
 \note{
