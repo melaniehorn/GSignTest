@@ -25,5 +25,5 @@ RoxygenNote: 6.0.1
 Depends:
     R (>= 2.10)
 Suggests: testthat
-URL: https://github.com/melaniehorn/RobRegTest
-BugReports: https://github.com/melaniehorn/RobRegTest/issues
+URL: https://github.com/melaniehorn/GSignTest
+BugReports: https://github.com/melaniehorn/GSignTest/issues
