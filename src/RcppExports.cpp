@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // calcDepth
 double calcDepth(NumericVector res, int k);
-RcppExport SEXP _RobRegTest_calcDepth(SEXP resSEXP, SEXP kSEXP) {
+RcppExport SEXP _GSignTest_calcDepth(SEXP resSEXP, SEXP kSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -19,7 +19,7 @@ END_RCPP
 }
 // calcSimpDepth
 double calcSimpDepth(NumericVector res, int k);
-RcppExport SEXP _RobRegTest_calcSimpDepth(SEXP resSEXP, SEXP kSEXP) {
+RcppExport SEXP _GSignTest_calcSimpDepth(SEXP resSEXP, SEXP kSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -31,12 +31,12 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_RobRegTest_calcDepth", (DL_FUNC) &_RobRegTest_calcDepth, 2},
-    {"_RobRegTest_calcSimpDepth", (DL_FUNC) &_RobRegTest_calcSimpDepth, 2},
+    {"_GSignTest_calcDepth", (DL_FUNC) &_GSignTest_calcDepth, 2},
+    {"_GSignTest_calcSimpDepth", (DL_FUNC) &_GSignTest_calcSimpDepth, 2},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_RobRegTest(DllInfo *dll) {
+RcppExport void R_init_GSignTest(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

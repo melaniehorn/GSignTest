@@ -15,7 +15,7 @@
 #' @examples calcDepth(rnorm(10), 3)
 #' @export
 calcDepth <- function(res, k) {
-    .Call(`_RobRegTest_calcDepth`, res, k)
+    .Call(`_GSignTest_calcDepth`, res, k)
 }
 
 #' @title Simplified k Sign Depth
@@ -32,6 +32,6 @@ calcDepth <- function(res, k) {
 #' @examples calcSimpDepth(rnorm(10), 3)
 #' @export
 calcSimpDepth <- function(res, k) {
-    .Call(`_RobRegTest_calcSimpDepth`, res, k)
+    .Call(`_GSignTest_calcSimpDepth`, res, k)
 }
 
