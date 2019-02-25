@@ -1,4 +1,4 @@
-Package: RobRegTest
+Package: GSignTest
 Type: Package
 Title: Robust Tests for Regression-Parameters via Sign Depth
 Version: 1.0.3
