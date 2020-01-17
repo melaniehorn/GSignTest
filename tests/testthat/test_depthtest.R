@@ -1,4 +1,4 @@
-library(RobRegTest)
+library(GSignTest)
 context("depthtest")
 
 test_that("default", {
@@ -18,7 +18,7 @@ test_that("default", {
 
 test_that("formula", {
   dat1 <- data.frame(x = rnorm(20), y = rnorm(20), z = rnorm(20))
-  expect_s3_class(depth.test(z ~ ., data = dat1, params = c(1, 1, 1), k = 3), "htest")
-  expect_lte(depth.test(z ~ ., data = dat1, params = c(1, 1, 1), k = 3)$p.value, 1)
-  expect_gte(depth.test(z ~ ., data = dat1, params = c(1, 1, 1), k = 3)$p.value, 0)
+  expect_s3_class(depth.test(z ~ ., data = dat1, params = c(1, 1, 1), K = 3), "htest")
+  expect_lte(depth.test(z ~ ., data = dat1, params = c(1, 1, 1), K = 3)$p.value, 1)
+  expect_gte(depth.test(z ~ ., data = dat1, params = c(1, 1, 1), K = 3)$p.value, 0)
 })

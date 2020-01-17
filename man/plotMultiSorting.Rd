@@ -4,8 +4,15 @@
 \alias{plotMultiSorting}
 \title{Plot the sorted data (two-dimensional)}
 \usage{
-plotMultiSorting(x, xlab, ylab, main, dims = 1:2, point.size = 1,
-  path.size = 1)
+plotMultiSorting(
+  x,
+  xlab,
+  ylab,
+  main,
+  dims = 1:2,
+  point.size = 1,
+  path.size = 1
+)
 }
 \arguments{
 \item{x}{[\code{multiSorting}]\cr An object returned from \code{\link{multiSorting}}.}

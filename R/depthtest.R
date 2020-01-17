@@ -5,7 +5,7 @@
 #' Performs a robust test whether a statistical model fits to some data.
 #'
 #' @param x [\code{numeric}]\cr vector of residuals.
-#' @param k [\code{integer(1)}]\cr parameter of the Sign Depth.
+#' @param K [\code{integer(1)}]\cr parameter of the Sign Depth.
 #' @param formula [\code{formula}]\cr a formula of the form \code{lhs ~ rhs} where
 #' lhs is a numeric giving the target variable and rhs are the influencing variables .
 #' @param data [\code{data.frame}]\cr a data frame containing the variables in the formula.
@@ -23,7 +23,7 @@
 #' At the moment only linear models for the formula interface are supported!
 #'
 #' The parameter k of the Sign Depth has to be a natural number. Currently
-#' only \eqn{k = 2, 3, 4, 5} is supported!
+#' only \eqn{K = 2, 3, 4, 5} is supported!
 #'
 #' The quantiles used for calculating the p-value of the test are simulation based.
 #' For more information see \code{\link{qdepth}}.
@@ -31,7 +31,7 @@
 #' @return A list with class \code{"htest"} containing the following components:
 #'\describe{
 #'  \item{\code{statistic}}{the value of the depth.}
-#'  \item{\code{parameter}}{the k of the Sign Depth.}
+#'  \item{\code{parameter}}{the K of the Sign Depth.}
 #'  \item{\code{p.value}}{the p-value for the test.}
 #'  \item{\code{alternative}}{a character string describing the alternative hypothesis.}
 #'  \item{\code{data.name}}{a character string giving the name of the data.}
@@ -44,7 +44,7 @@
 #' @examples
 #' depth.test(rnorm(30), 3)
 #' depth.test(y ~ ., data = data.frame(x = rnorm(30), y = rnorm(30)),
-#'   params = c(1, 1), k = 3)
+#'   params = c(1, 1), K = 3)
 #'
 #' @rdname depthtest
 #' @export
@@ -56,18 +56,18 @@ depth.test <- function(x, ...) {
 #' @rdname depthtest
 #' @method depth.test default
 #' @export
-depth.test.default <- function(x, k, ...) {
+depth.test.default <- function(x, K, ...) {
   assert_numeric(x, min.len = 10, any.missing = FALSE)
-  assert_integerish(k, lower = 2, upper = 5, len = 1, any.missing = FALSE)
+  assert_integerish(K, lower = 2, upper = 5, len = 1, any.missing = FALSE)
 
   dname <- deparse(substitute(x))
   method <- "Sign Depth Test (via given residuals)"
   alternative <- "Model where the residuals come from fits not to the data"
-  parameter <- k
+  parameter <- K
 
-  stat <- calcDepth(x, k)
+  stat <- calcDepth(x, K)
 
-  assign("dat", get(paste0("quants", k)))
+  assign("dat", get(paste0("quants", K)))
   n <- min(length(x), 100)
   tmp <- which(dat[, as.character(n)] > stat)
   if(length(tmp) == 0) {
@@ -77,7 +77,7 @@ depth.test.default <- function(x, k, ...) {
     p.value <- as.numeric(rownames(dat[ind, ]))
   }
 
-  names(parameter) <- "k"
+  names(parameter) <- "K"
   names(stat) <- "depth"
 
   rval <- list(statistic = stat, parameter = parameter, p.value = p.value,
@@ -90,10 +90,10 @@ depth.test.default <- function(x, k, ...) {
 #' @rdname depthtest
 #' @method depth.test formula
 #' @export
-depth.test.formula <- function(formula, data, params, k, ...) {
+depth.test.formula <- function(formula, data, params, K, ...) {
   assert_data_frame(data, any.missing = FALSE, min.cols = 1)
   assert_numeric(params, min.len = 1, any.missing = FALSE)
-  assert_integerish(k, lower = 2, upper = 5, len = 1, any.missing = FALSE)
+  assert_integerish(K, lower = 2, upper = 5, len = 1, any.missing = FALSE)
 
   mm <- model.matrix(formula, data)
   mr <- model.response(model.frame(formula, data))
@@ -112,11 +112,11 @@ depth.test.formula <- function(formula, data, params, k, ...) {
   dname <- deparse(substitute(data))
   method <- "Sign Depth Test (via given parameters and data)"
   alternative <- paste("True parameter vector is not equal to", paste(params, collapse = " "))
-  parameter <- k
+  parameter <- K
 
-  stat <- calcDepth(res, k)
+  stat <- calcDepth(res, K)
 
-  assign("dat", get(paste0("quants", k)))
+  assign("dat", get(paste0("quants", K)))
   n <- min(length(res), 100)
   tmp <- which(dat[, as.character(n)] > stat)
   if(length(tmp) == 0) {
@@ -126,7 +126,7 @@ depth.test.formula <- function(formula, data, params, k, ...) {
     p.value <- as.numeric(rownames(dat[ind, ]))
   }
 
-  names(parameter) <- "k"
+  names(parameter) <- "K"
   names(stat) <- "depth"
 
   rval <- list(statistic = stat, parameter = parameter, p.value = p.value,

@@ -1,4 +1,4 @@
 library(testthat)
-library(RobRegTest)
+library(GSignTest)
 
-test_check("RobRegTest")
+test_check("GSignTest")

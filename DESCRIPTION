@@ -1,7 +1,7 @@
 Package: GSignTest
 Type: Package
 Title: Robust Tests for Regression-Parameters via Sign Depth
-Version: 1.0.3
+Version: 1.0.4
 Author: Melanie Horn
 Maintainer: Melanie Horn <mhorn@statistik.tu-dortmund.de>
 Description: The Simplicial Depth is a robust measure of fitness for 
@@ -21,7 +21,7 @@ Imports: Rcpp,
     TSP,
     nsga2R,
     ggplot2
-RoxygenNote: 6.0.1
+RoxygenNote: 7.0.2
 Depends:
     R (>= 2.10)
 Suggests: testthat

@@ -8,9 +8,9 @@
 \usage{
 depth.test(x, ...)
 
-\method{depth.test}{default}(x, k, ...)
+\method{depth.test}{default}(x, K, ...)
 
-\method{depth.test}{formula}(formula, data, params, k, ...)
+\method{depth.test}{formula}(formula, data, params, K, ...)
 }
 \arguments{
 \item{x}{[\code{numeric}]\cr vector of residuals.}
@@ -18,7 +18,7 @@ depth.test(x, ...)
 \item{...}{[any] further arguments in the formula-method. Arguments are passed
 to the \code{multiSorting}-function.}
 
-\item{k}{[\code{integer(1)}]\cr parameter of the Sign Depth.}
+\item{K}{[\code{integer(1)}]\cr parameter of the Sign Depth.}
 
 \item{formula}{[\code{formula}]\cr a formula of the form \code{lhs ~ rhs} where
 lhs is a numeric giving the target variable and rhs are the influencing variables .}
@@ -31,7 +31,7 @@ lhs is a numeric giving the target variable and rhs are the influencing variable
 A list with class \code{"htest"} containing the following components:
 \describe{
  \item{\code{statistic}}{the value of the depth.}
- \item{\code{parameter}}{the k of the Sign Depth.}
+ \item{\code{parameter}}{the K of the Sign Depth.}
  \item{\code{p.value}}{the p-value for the test.}
  \item{\code{alternative}}{a character string describing the alternative hypothesis.}
  \item{\code{data.name}}{a character string giving the name of the data.}
@@ -51,7 +51,7 @@ calculated with this model.
 At the moment only linear models for the formula interface are supported!
 
 The parameter k of the Sign Depth has to be a natural number. Currently
-only \eqn{k = 2, 3, 4, 5} is supported!
+only \eqn{K = 2, 3, 4, 5} is supported!
 
 The quantiles used for calculating the p-value of the test are simulation based.
 For more information see \code{\link{qdepth}}.
@@ -59,7 +59,7 @@ For more information see \code{\link{qdepth}}.
 \examples{
 depth.test(rnorm(30), 3)
 depth.test(y ~ ., data = data.frame(x = rnorm(30), y = rnorm(30)),
-  params = c(1, 1), k = 3)
+  params = c(1, 1), K = 3)
 
 }
 \seealso{

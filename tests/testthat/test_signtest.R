@@ -1,4 +1,4 @@
-library(RobRegTest)
+library(GSignTest)
 context("signtest")
 
 test_that("default", {

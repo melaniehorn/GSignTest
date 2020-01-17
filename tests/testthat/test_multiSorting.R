@@ -1,4 +1,4 @@
-library(RobRegTest)
+library(GSignTest)
 context("multiSorting")
 
 test_that("one-dimensional", {
@@ -78,5 +78,5 @@ test_that("error", {
   expect_error(multiSorting(dat1, method = "nonDomSort", control = list(tie.breaking = "nonDomSort")))
   expect_error(multiSorting(dat1, method = "clust", control = list(clust.method = "bla")))
   expect_error(multiSorting(dat1, method = "nn", control = list(dist.method = "bla")))
-  expect_error(multiSorting(dat1, method = "shp", control = list(path = "bla")))
+  expect_error(suppressWarnings(multiSorting(dat1, method = "shp", control = list(path = "bla"))))
 })

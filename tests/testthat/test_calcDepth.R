@@ -1,4 +1,4 @@
-library(RobRegTest)
+library(GSignTest)
 context("calcDepth")
 
 test_that("general", {
@@ -13,10 +13,10 @@ test_that("general", {
 })
 
 test_that("worst", {
-  expect_equal(calcDepth(rep(c(-1, 1), 10), 2), qdepth(1, 20, k = 2))
-  expect_equal(calcDepth(rep(c(-1, 1), 10), 3), qdepth(1, 20, k = 3))
-  expect_equal(calcDepth(rep(c(-1, 1), 10), 4), qdepth(1, 20, k = 4))
-  expect_equal(calcDepth(rep(c(-1, 1), 10), 5), qdepth(1, 20, k = 5))
+  expect_equal(calcDepth(rep(c(-1, 1), 10), 2), qdepth(1, 20, K = 2))
+  expect_equal(calcDepth(rep(c(-1, 1), 10), 3), qdepth(1, 20, K = 3))
+  expect_equal(calcDepth(rep(c(-1, 1), 10), 4), qdepth(1, 20, K = 4))
+  expect_equal(calcDepth(rep(c(-1, 1), 10), 5), qdepth(1, 20, K = 5))
 })
 
 test_that("error", {
@@ -25,4 +25,21 @@ test_that("error", {
   expect_error(calcDepth(c(-1, 1, -1), 4))
   expect_error(calcDepth(c(-1, 1, -1, 1), 5))
   expect_error(calcDepth("a", 3))
+})
+
+test_that("equality", {
+  res <- rnorm(10)
+  expect_equal(calcDepth(res, 2),
+    suppressWarnings(calcDepth(res, 2, linear = FALSE)))
+  expect_equal(calcDepth(res, 3),
+    suppressWarnings(calcDepth(res, 3, linear = FALSE)))
+  expect_equal(calcDepth(res, 4),
+    suppressWarnings(calcDepth(res, 4, linear = FALSE)))
+  expect_equal(calcDepth(res, 5),
+    suppressWarnings(calcDepth(res, 5, linear = FALSE)))
+})
+
+test_that("warning", {
+  expect_warning(calcDepth(rnorm(10), 3, linear = FALSE))
+  expect_warning(calcDepth(rnorm(10), 6))
 })

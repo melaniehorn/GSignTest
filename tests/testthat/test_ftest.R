@@ -1,4 +1,4 @@
-library(RobRegTest)
+library(GSignTest)
 context("ftest")
 
 test_that("formula", {
