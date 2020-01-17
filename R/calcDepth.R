@@ -12,10 +12,10 @@
 #'   Should the depth be transformed by the formula \eqn{N * (res - 0.5^(K-1))},
 #'   so that the distribution of the K Sign Depth converges for large number
 #'   of observations N? Default is \code{FALSE}.
-#' @param linear [code{logical(1)}]\cr
+#' @param linear [\code{logical(1)}]\cr
 #'   Should the depth be calculated in linear runtime? At the moment, for exact
 #'   results this method is available only for K = 2, 3, 4, 5. Default is \code{TRUE}.
-#' @param exact [code{logical(1)}]\cr
+#' @param exact [\code{logical(1)}]\cr
 #'   Should the depth be calculated exactly? If \code{FALSE}, terms of scale
 #'   o(1) will ne ignored. If \code{linear} is \code{FALSE} always the exact
 #'   result is computed, independent of the value of \code{exact}. Default is
@@ -25,12 +25,13 @@
 #' @note The implementation of the linear calculation is based on a work of
 #'   Kevin Leckey, Dennis Malcherczyk and Christine Mueller.
 #'
-#' @examples calcDepth(rnorm(10), 3)
+#' @examples
+#' calcDepth(rnorm(10), 3)
 #'
-#'   # Difference of exact and approximative implementation:
-#'   res <- rnorm(100)
-#'   calcDepth(res, 4, exact = TRUE)
-#'   calcDepth(res, 4, exact = FALSE)
+#' # Difference of exact and approximative implementation:
+#' res <- rnorm(100)
+#' calcDepth(res, 4, exact = TRUE)
+#' calcDepth(res, 4, exact = FALSE)
 #' @export
 calcDepth <- function(res, K, transform = FALSE, linear = TRUE, exact = TRUE) {
   assert_numeric(res, min.len = K, any.missing = FALSE)

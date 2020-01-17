@@ -18,11 +18,11 @@ Should the depth be transformed by the formula \eqn{N * (res - 0.5^(K-1))},
 so that the distribution of the K Sign Depth converges for large number
 of observations N? Default is \code{FALSE}.}
 
-\item{linear}{[code{logical(1)}]\cr
+\item{linear}{[\code{logical(1)}]\cr
 Should the depth be calculated in linear runtime? At the moment, for exact
 results this method is available only for K = 2, 3, 4, 5. Default is \code{TRUE}.}
 
-\item{exact}{[code{logical(1)}]\cr
+\item{exact}{[\code{logical(1)}]\cr
 Should the depth be calculated exactly? If \code{FALSE}, terms of scale
 o(1) will ne ignored. If \code{linear} is \code{FALSE} always the exact
 result is computed, independent of the value of \code{exact}. Default is
@@ -42,8 +42,8 @@ The implementation of the linear calculation is based on a work of
 \examples{
 calcDepth(rnorm(10), 3)
 
-  # Difference of exact and approximative implementation:
-  res <- rnorm(100)
-  calcDepth(res, 4, exact = TRUE)
-  calcDepth(res, 4, exact = FALSE)
+# Difference of exact and approximative implementation:
+res <- rnorm(100)
+calcDepth(res, 4, exact = TRUE)
+calcDepth(res, 4, exact = FALSE)
 }
