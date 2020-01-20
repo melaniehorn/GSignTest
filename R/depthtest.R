@@ -22,7 +22,7 @@
 #'
 #' At the moment only linear models for the formula interface are supported!
 #'
-#' The parameter k of the Sign Depth has to be a natural number. Currently
+#' The parameter K of the Sign Depth has to be a natural number. Currently
 #' only \eqn{K = 2, 3, 4, 5} is supported!
 #'
 #' The quantiles used for calculating the p-value of the test are simulation based.

@@ -4,6 +4,7 @@ Title: Robust Tests for Regression-Parameters via Sign Depth
 Version: 1.0.4
 Author: Melanie Horn
 Maintainer: Melanie Horn <mhorn@statistik.tu-dortmund.de>
+Date: 2020-01-20
 Description: The Simplicial Depth is a robust measure of fitness for 
   a regression model. One can use it also for testing whether a given 
   parameter vector of a regression model fits to some data. The Sign 
