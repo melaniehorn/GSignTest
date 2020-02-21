@@ -1,7 +1,7 @@
 Package: GSignTest
 Type: Package
 Title: Robust Tests for Regression-Parameters via Sign Depth
-Version: 1.0.4
+Version: 1.0.5
 Author: Melanie Horn
 Maintainer: Melanie Horn <mhorn@statistik.tu-dortmund.de>
 Date: 2020-01-20
@@ -19,6 +19,7 @@ LazyData: true
 LinkingTo: Rcpp
 Imports: Rcpp,
     checkmate,
+    geometry,
     TSP,
     nsga2R,
     ggplot2

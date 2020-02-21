@@ -6,7 +6,7 @@ test_that("one-dimensional", {
   dat2 <- data.frame(x = rnorm(10))
 
   methods <- c("identity", "random", "norm", "median", "dimSort",
-    "weightedSum", "projection", "nonDomSort", "clust", "nn")
+    "weightedSum", "projection", "nonDomSort", "convhull", "clust", "nn")
 
   sapply(methods, function(x)
     expect_equal(sort(multiSorting(dat1, method = x)$inds), 1:10))
@@ -20,7 +20,7 @@ test_that("more-dimensional", {
   dat3 <- as.data.frame(matrix(rnorm(100), ncol = 10))
 
   methods <- c("identity", "random", "norm", "median", "dimSort",
-    "weightedSum", "projection", "nonDomSort", "clust", "nn")
+    "weightedSum", "projection", "nonDomSort", "convhull", "clust", "nn")
 
   sapply(methods, function(x)
     expect_equal(sort(multiSorting(dat1, method = x)$inds), 1:10))
@@ -36,7 +36,7 @@ test_that("non-default-values", {
   dat3 <- as.data.frame(matrix(rnorm(100), ncol = 10))
 
   methods <- c("identity", "random", "norm", "median", "dimSort",
-    "weightedSum", "projection", "nonDomSort", "clust", "nn")
+    "weightedSum", "projection", "nonDomSort", "convhull", "clust", "nn")
   control12 <- list(degree = 1, order = 2:1, weights = c(3, 5), vec.pos = c(1, 2),
     vec.dir = c(2, 1), tie.breaking = "random", clust.method = "single",
     dist.method = "minkowski", p = 4)
