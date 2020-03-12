@@ -39,13 +39,13 @@ makeConvHull <- function(data, path) {
 
   inds <- c()
   for(i in seq_along(erg)) {
-    if(nrow(erg[[i]]) > 1) {
+    if(nrow(erg[[i]]) > 2) {
       tsp <- TSP(dist(erg[[i]]))
       tour <- suppressWarnings(solve_TSP(tsp, method = method, verbose = FALSE))
       names(tour) <- NULL
       inds <- c(inds, calcDist(erg[[i]], data)[tour, ][, 1])
     } else {
-      inds <- c(inds, calcDist(erg[[i]], data)[1, , drop = FALSE][, 1])
+      inds <- c(inds, calcDist(erg[[i]], data)[1:nrow(erg[[i]]), , drop = FALSE][, 1])
       names(inds) <- NULL
     }
   }
