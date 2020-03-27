@@ -6,7 +6,7 @@ makeConvHull <- function(data, path) {
   method <- if (class(tryMethod) == "try-error") "nn" else "shp"
 
   if (ncol(data) == 1) {
-    return(multiSorting(data, method = method)$inds)
+    return(multiSorting(data, method = method, control = list(path = path))$inds)
   }
 
   method <- ifelse(method == "nn", "repetitive_nn", "concorde")
