@@ -40,36 +40,47 @@ calcDepth <- function(res, K, transform = FALSE, linear = TRUE, exact = TRUE) {
   assert_logical(linear, any.missing = FALSE, len = 1)
   assert_logical(exact, any.missing = FALSE, len = 1)
 
+  res2 <- res[res != 0]
+  N <- length(res)
+  M <- length(res2)
+
+
   if (!linear) {
     if (K %in% 3:5)
       warning("It is recommended to use the linear implementation!")
-    erg <- calcDepth_def(res, K)
+    if (N == M) {
+      erg <- calcDepth_def(res, K)
+    } else {
+      erg <- (choose(M, K) * calcDepth_def(res2, K) + choose(N - M, K)) / choose(N, K)
+    }
     if (transform) erg <- length(res) * (erg - (1/2)^(K - 1))
   } else {
-    erg <- asymp_K_depth(res, K)
+    erg <- asymp_K_depth(res2, K)
     if (exact) {
       if (K == 4) {
-        N <- length(res)
-        S <- cumsum(sign(res))
-        erg <- erg + N * linearprod(res, 4) / (choose(N, 4) * 8) +
-          N^3 / ((N - 1) * (N - 2) * (N - 3)) * 3 * (1 / (4 * N^2) - 1 / (2 * N^3)) *
-          (S[N]^2 - N)
+        S <- cumsum(sign(res2))
+        erg <- erg + M * linearprod(res2, 4) / (choose(M, 4) * 8) +
+          M^3 / ((M - 1) * (M - 2) * (M - 3)) * 3 * (1 / (4 * M^2) - 1 / (2 * M^3)) *
+          (S[M]^2 - M)
       } else if (K == 5) {
-        N <- length(res)
-        S <- cumsum(sign(res))
+        S <- cumsum(sign(res2))
         z1 <- sum(S^2)
-        erg <- erg + N / (16 * choose(N, 5)) * (N * linearprod(res, 4) -
-            2 * prod_one_factor(res, 4, 4) + 2 * prod_one_factor(res, 4, 3) -
-            2 * prod_one_factor(res, 4, 2) + 2 * prod_one_factor(res, 4, 1)) +
-          N^4 / (32 * choose(N, 5)) * ((1 / (2 * N) * (S[N]^2 - N) -
-              4 / (3 * N^2) * (S[N]^2 - N) - 1/N * S[N]^2 + 1/N^2 * (z1 + sum((S[N] - S)^2)) +
-              8 / (3 * N^2) * S[N]^2 - 8 / (3 * N^3) * (z1 + sum((S[N] - S)^2))))
+        erg <- erg + M / (16 * choose(M, 5)) * (M * linearprod(res2, 4) -
+            2 * prod_one_factor(res2, 4, 4) + 2 * prod_one_factor(res2, 4, 3) -
+            2 * prod_one_factor(res2, 4, 2) + 2 * prod_one_factor(res2, 4, 1)) +
+          M^4 / (32 * choose(M, 5)) * ((1 / (2 * M) * (S[M]^2 - M) -
+              4 / (3 * M^2) * (S[M]^2 - M) - 1/M * S[M]^2 + 1/M^2 * (z1 + sum((S[M] - S)^2)) +
+              8 / (3 * M^2) * S[M]^2 - 8 / (3 * M^3) * (z1 + sum((S[M] - S)^2))))
       } else if (K >= 6) {
         warning("No exact linear implementation available. Use linear = FALSE instead.
           The approximative result will be returned.")
       }
     }
-    if (!transform) erg <- erg / length(res) + (1/2)^(K - 1)
+    erg <- erg / length(res2) + (1/2)^(K - 1)
+    if (M != N) {
+      erg <- (choose(M, K) * erg + choose(N - M, K)) / choose(N, K)
+    }
+    if (transform) erg <- length(res) * (erg - (1/2)^(K - 1))
   }
   return(erg)
 }
