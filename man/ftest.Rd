@@ -2,7 +2,7 @@
 % Please edit documentation in R/ftest.R
 \name{f.test}
 \alias{f.test}
-\title{F Test}
+\title{The F-test}
 \usage{
 f.test(formula, data, params)
 }
@@ -12,13 +12,13 @@ lhs is a numeric giving the target variable and rhs are the influencing variable
 
 \item{data}{[\code{data.frame}]\cr a data frame containing the variables in the formula.}
 
-\item{params}{[\code{numeric}]\cr a parameter vector for the null-hypotheses.}
+\item{params}{[\code{numeric}]\cr a parameter vector for the null-hypothesis.}
 }
 \value{
 A list with class \code{"htest"} containing the following components:
 \describe{
- \item{\code{statistic}}{the F Test statistic.}
- \item{\code{parameter}}{the degrees of freedom of the appropriate F distribution.}
+ \item{\code{statistic}}{the F-test statistic.}
+ \item{\code{parameter}}{the degrees of freedom of the appropriate F-distribution.}
  \item{\code{p.value}}{the p-value for the test.}
  \item{\code{alternative}}{a character string describing the alternative hypothesis.}
  \item{\code{data.name}}{a character string giving the name of the data.}
@@ -26,10 +26,10 @@ A list with class \code{"htest"} containing the following components:
 }
 }
 \description{
-Performs a test whether a linear model fits to some data via a regression F Test.
+Performs a test whether a linear model fits to some data via a regression F-test.
 }
 \details{
-Here, a classical F Test for testing the parameter vector of a linear regression
+Here, a classical F-test for testing the parameter vector of a linear regression
 model is done. Only the two sided test is currently supported.
 }
 \examples{

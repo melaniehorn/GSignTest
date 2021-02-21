@@ -1,14 +1,14 @@
 
-#' @title The Distribution of the Sign Depth
+#' @title The distributions of the sign depths
 #' @name depthDistribution
 #'
 #' @description
-#' Density, distribution function and quantile function for the distribution of the K Sign Depth.
+#' Density, distribution function and quantile function for the distribution of the K-sign depth.
 #'
 #' @param x,q [\code{numeric}]\cr vector of quantiles.
 #' @param p [\code{numeric}]\cr vector of probabilities.
-#' @param N [\code{integer(1)}]\cr number of observations.
-#' @param K [\code{integer(1)}]\cr parameter of the Sign Depth.
+#' @param N [\code{integer(1)}]\cr number of data points.
+#' @param K [\code{integer(1)}]\cr parameter of the sign depth.
 #' Currently only \eqn{K = 2, 3, 4, 5} is supported. Default is \eqn{K = 3}.
 #' @param transform [\code{logical(1)}]\cr
 #' Shall the values be transformed so that the distribution converges for large N?
@@ -18,9 +18,8 @@
 #'
 #' @details
 #' For \eqn{N = K, \ldots, 25} the depth distributions are calculated exactly.
-#' For \eqn{N = 26, \ldots, 100} the distribution is simulated.
-#' For \eqn{N > 100} the values of \eqn{n = 100} are token
-#' (the convergence of the distribution is sufficiently at that point).
+#' For \eqn{N = 26, \ldots, 100} the distributions were simulated.
+#' For \eqn{N > 100} the values of \eqn{N = 100} are token.
 #'
 #' If y is a non-transformed value of one of these functions, \eqn{N * (y - 0.5^(K-1))} is the transformed value.
 #' For further understanding of the transformed statistic, see references.

@@ -1,5 +1,4 @@
-
-#' @title Sign Test
+#' @title The sign test
 #'
 #' @description
 #' Performs a test whether a statistical model fits to some data via a binomial
@@ -7,9 +6,9 @@
 #'
 #' @param x [\code{numeric}]\cr vector of residuals.
 #' @param formula [\code{formula}]\cr a formula of the form \code{lhs ~ rhs} where
-#' lhs is a numeric giving the target variable and rhs are the influencing variables .
+#' lhs is a numeric giving the target variable and rhs are the explanatory variables .
 #' @param data [\code{data.frame}]\cr a data frame containing the variables in the formula.
-#' @param params [\code{numeric}]\cr a parameter vector for the null-hypotheses.
+#' @param params [\code{numeric}]\cr a parameter vector for the null-hypothesis.
 #' @param ... [\code{any}]\cr further arguments.
 #'
 #' @details
@@ -24,7 +23,7 @@
 #' @return A list with class \code{"htest"} containing the following components:
 #'\describe{
 #'  \item{\code{statistic}}{the number of positive residuals.}
-#'  \item{\code{parameter}}{the number of observations.}
+#'  \item{\code{parameter}}{the number of data points.}
 #'  \item{\code{p.value}}{the p-value for the test.}
 #'  \item{\code{alternative}}{a character string describing the alternative hypothesis.}
 #'  \item{\code{data.name}}{a character string giving the name of the data.}

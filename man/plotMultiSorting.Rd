@@ -34,7 +34,7 @@ The ggplot object
 }
 \description{
 Plots two dimensions of the data as a scatter plot and the sorting of the
-data as lines, which connect the points. Therefore the function ggplot from
+data as lines, which connect the points. Therefore, the function ggplot from
 the ggplot2-package is used.
 }
 \examples{

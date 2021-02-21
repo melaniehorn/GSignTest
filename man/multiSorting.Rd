@@ -2,16 +2,17 @@
 % Please edit documentation in R/multiSorting.R
 \name{multiSorting}
 \alias{multiSorting}
-\title{Multidimensional Sorting}
+\title{Multidimensional Sorting/Ordering}
 \usage{
 multiSorting(data, method = "identity", control = list())
 }
 \arguments{
-\item{data}{[\code{data.frame}]\cr \code{data.frame} where each row consists of one numeric observation.}
+\item{data}{[\code{data.frame}]\cr \code{data.frame} where each row consists
+of one numeric data point vector.}
 
 \item{method}{[\code{character(1)}]\cr Method for sorting, see Details.}
 
-\item{control}{Further Arguments for the methods, see Details.}
+\item{control}{[\code{list}]\cr Further Arguments for the methods, see Details.}
 }
 \value{
 Named list with the entries:
@@ -22,19 +23,19 @@ Named list with the entries:
 }
 \description{
 Performs a multidimensional sorting of a \code{data.frame}.
-One can choose between various approachs for the sorting, see the Details.
+One can choose between various approaches for the sorting, see the Details.
 }
 \details{
 The following methods for sorting are supported:
 \describe{
   \item{\code{"identity"}}{order in the data set (i.e. the function does no further sorting).}
   \item{\code{"random"}}{a random order.}
-  \item{\code{"norm"}}{ordering via a vector-norm.}
-  \item{\code{"median"}}{ordering via the median value per observation.}
+  \item{\code{"norm"}}{ordering via a vector norm.}
+  \item{\code{"median"}}{ordering via the median value per data point vector.}
   \item{\code{"dimSort"}}{sorting the data one-dimensional. Ties are broken by the next dimension and so on.}
-  \item{\code{"weightedSum"}}{ordering the data via the value of a weighted sum per observation.}
-  \item{\code{"projection"}}{projects the points of the dataset to a line.}
-  \item{\code{"nonDomSort"}}{Nondominated-Sorting. Ties can be broken via one of the other methods.}
+  \item{\code{"weightedSum"}}{ordering the data via the value of a weighted sum per data point vector.}
+  \item{\code{"projection"}}{projects the points of the data set orthogonal on a line.}
+  \item{\code{"nonDomSort"}}{Nondominated Sorting. Ties can be broken via one of the other methods.}
   \item{\code{"convhull"}}{Computing repeatedly convex hulls for ordering the data.}
   \item{\code{"halfspace"}}{ordering according to the (approximate) values of Tukey's halfspace depth.}
   \item{\code{"clust"}}{Take the order gotten from a hierarchical clustering by \code{\link[stats]{hclust}}}
@@ -99,6 +100,11 @@ multiSorting(iris[, 1:4], method = "nn")
 }
 \references{
 \itemize{
+  \item Horn M. Sign depth for parameter tests in multiple regression. TU Dortmund University; 2021.
+  \item Barber, C. B., Dobkin, D. P., and Huhdanpaa, H. (1996). “The Quickhull Algorithm for Convex Hulls”. In: ACM Trans. Math. Softw. 22.4, pp. 469–483.
+  \item Tukey, J. W. (1975). “Mathematics and the picturing of data”. In: Proceedings of the International Congress of Mathematicians (Vancouver, BC, 1974), Volume 2. Montreal, Quebec, Canada: Canadian Mathematical Congress, pp. 523–531.
+  \item Deb, K., Agrawal, S., Pratap, A., and Meyarivan, T. (2000). “A Fast Elitist Non- dominated Sorting Genetic Algorithm for Multi-objective Optimization: NSGA-II”. In: Parallel Problem Solving from Nature PPSN VI. Berlin, Heidelberg: Springer Berlin Heidelberg, pp. 849–858.
+  \item Rockafellar, R. T. (1970). Convex analysis. Vol. 28. Princeton mathematical series. Princton University Press.
   \item Concorde home page, \url{http://www.tsp.gatech.edu/concorde/}
   \item Concorde download page, \url{http://www.tsp.gatech.edu/concorde/downloads/downloads.htm}
   \item David Appletgate, Robert Bixby, Vasek Chvatal, William Cook (2001): TSP cuts which do not

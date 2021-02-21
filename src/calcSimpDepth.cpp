@@ -14,33 +14,33 @@ int signC2(double x) {
   }
 }
 
-//' @title Simplified k Sign Depth
+//' @title Simplified K-sign depth
 //'
 //' @description
-//' \code{calcSimpDepth} calculates the simplified k Sign Depth of a given vector of residuals.
+//' \code{calcSimpDepth} calculates the simplified K-sign depth of a given vector of residuals.
 //'
 //' @param res [\code{numeric}]\cr
 //'   numeric vector of residuals
-//' @param k [\code{integer(1)}]\cr
-//'   the k of the depth-formula
-//' @return [\code{numeric(1)}] the calculated simplified k-Depth of res.
+//' @param K [\code{integer(1)}]\cr
+//'   the parameter K of the simplified K-sign depth
+//' @return [\code{numeric(1)}] the calculated simplified K-sign depth of res.
 //'
 //' @examples calcSimpDepth(rnorm(10), 3)
 //' @export
 // [[Rcpp::export]]
-double calcSimpDepth(NumericVector res, int k) {
+double calcSimpDepth(NumericVector res, int K) {
   int n = res.size();
-  if(n < k)
+  if(n < K)
     stop("Can't calculate Depth when k is larger than the numbers of residuals");
 
   double num = 0;
-  double denom = n - k + 1;
+  double denom = n - K + 1;
 
   int counter, tmp;
   for(int i = 0; i < denom; i++) {
     counter = 1;
     tmp = signC2(res[i]);
-    for(int j = 1; j < k; j++) {
+    for(int j = 1; j < K; j++) {
       if(signC2(res[i+j]) == tmp) {
         counter = 0;
         break;

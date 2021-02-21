@@ -2,22 +2,22 @@
 % Please edit documentation in R/RcppExports.R
 \name{calcSimpDepth}
 \alias{calcSimpDepth}
-\title{Simplified k Sign Depth}
+\title{Simplified K-sign depth}
 \usage{
-calcSimpDepth(res, k)
+calcSimpDepth(res, K)
 }
 \arguments{
 \item{res}{[\code{numeric}]\cr
 numeric vector of residuals}
 
-\item{k}{[\code{integer(1)}]\cr
-the k of the depth-formula}
+\item{K}{[\code{integer(1)}]\cr
+the parameter K of the simplified K-sign depth}
 }
 \value{
-[\code{numeric(1)}] the calculated simplified k-Depth of res.
+[\code{numeric(1)}] the calculated simplified K-sign depth of res.
 }
 \description{
-\code{calcSimpDepth} calculates the simplified k Sign Depth of a given vector of residuals.
+\code{calcSimpDepth} calculates the simplified K-sign depth of a given vector of residuals.
 }
 \examples{
 calcSimpDepth(rnorm(10), 3)

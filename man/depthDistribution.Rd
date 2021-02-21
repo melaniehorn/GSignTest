@@ -5,7 +5,7 @@
 \alias{qdepth}
 \alias{pdepth}
 \alias{ddepth}
-\title{The Distribution of the Sign Depth}
+\title{The distributions of the sign depths}
 \usage{
 qdepth(p, N, K = 3, transform = FALSE)
 
@@ -16,9 +16,9 @@ ddepth(x, N, K = 3, transform = FALSE)
 \arguments{
 \item{p}{[\code{numeric}]\cr vector of probabilities.}
 
-\item{N}{[\code{integer(1)}]\cr number of observations.}
+\item{N}{[\code{integer(1)}]\cr number of data points.}
 
-\item{K}{[\code{integer(1)}]\cr parameter of the Sign Depth.
+\item{K}{[\code{integer(1)}]\cr parameter of the sign depth.
 Currently only \eqn{K = 2, 3, 4, 5} is supported. Default is \eqn{K = 3}.}
 
 \item{transform}{[\code{logical(1)}]\cr
@@ -31,13 +31,12 @@ Shall the values be transformed so that the distribution converges for large N?}
 and \code{qdepth} the quantile function.
 }
 \description{
-Density, distribution function and quantile function for the distribution of the K Sign Depth.
+Density, distribution function and quantile function for the distribution of the K-sign depth.
 }
 \details{
 For \eqn{N = K, \ldots, 25} the depth distributions are calculated exactly.
-For \eqn{N = 26, \ldots, 100} the distribution is simulated.
-For \eqn{N > 100} the values of \eqn{n = 100} are token
-(the convergence of the distribution is sufficiently at that point).
+For \eqn{N = 26, \ldots, 100} the distributions were simulated.
+For \eqn{N > 100} the values of \eqn{N = 100} are token.
 
 If y is a non-transformed value of one of these functions, \eqn{N * (y - 0.5^(K-1))} is the transformed value.
 For further understanding of the transformed statistic, see references.

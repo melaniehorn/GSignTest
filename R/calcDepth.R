@@ -1,29 +1,36 @@
-#' @title K Sign Depth
+#' @title Calculating the K-sign depth
 #'
 #' @description
-#' \code{calcDepth} calculates the (approximative) K Sign Depth of a given
+#' \code{calcDepth} calculates the (approximative) K-sign depth of a given
 #' vector of residuals.
 #'
 #' @param res [\code{numeric}]\cr
 #'   numeric vector of residuals
 #' @param K [\code{integer(1)}]\cr
-#'   the K of the depth-formula
+#'   the parameter K for the sign depth
 #' @param transform [\code{logical(1)}]\cr
 #'   Should the depth be transformed by the formula \eqn{N * (res - 0.5^(K-1))},
-#'   so that the distribution of the K Sign Depth converges for large number
-#'   of observations N? Default is \code{FALSE}.
+#'   so that the distribution of the K-sign depth converges for large number
+#'   of data points N? Default is \code{FALSE}.
 #' @param linear [\code{logical(1)}]\cr
-#'   Should the depth be calculated in linear runtime? At the moment, for exact
+#'   Should the depth be calculated in linear time complexity? At the moment, for exact
 #'   results this method is available only for K = 2, 3, 4, 5. Default is \code{TRUE}.
 #' @param exact [\code{logical(1)}]\cr
 #'   Should the depth be calculated exactly? If \code{FALSE}, terms of scale
 #'   o(1) will ne ignored. If \code{linear} is \code{FALSE} always the exact
 #'   result is computed, independent of the value of \code{exact}. Default is
 #'   \code{TRUE}.
-#' @return [\code{numeric(1)}] the calculated K Sign Depth of \code{res}.
+#' @return [\code{numeric(1)}] the calculated K-sign depth of \code{res}.
 #'
 #' @note The implementation of the linear calculation is based on a work of
-#'   Kevin Leckey, Dennis Malcherczyk and Christine Mueller.
+#'   Dennis Malcherczyk.
+#'
+#' @references
+#' Horn M. Sign depth for parameter tests in multiple regression.
+#' TU Dortmund University; 2021.
+#'
+#' Malcherczy D. K-sign depth: Asymptotic distribution, efficient computation
+#' and applications. TU Dortmund University; 2021.
 #'
 #' @examples
 #' calcDepth(rnorm(10), 3)

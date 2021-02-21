@@ -6,14 +6,14 @@
 using namespace Rcpp;
 
 // calcSimpDepth
-double calcSimpDepth(NumericVector res, int k);
-RcppExport SEXP _GSignTest_calcSimpDepth(SEXP resSEXP, SEXP kSEXP) {
+double calcSimpDepth(NumericVector res, int K);
+RcppExport SEXP _GSignTest_calcSimpDepth(SEXP resSEXP, SEXP KSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type res(resSEXP);
-    Rcpp::traits::input_parameter< int >::type k(kSEXP);
-    rcpp_result_gen = Rcpp::wrap(calcSimpDepth(res, k));
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    rcpp_result_gen = Rcpp::wrap(calcSimpDepth(res, K));
     return rcpp_result_gen;
 END_RCPP
 }

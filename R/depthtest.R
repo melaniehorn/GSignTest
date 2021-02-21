@@ -1,15 +1,15 @@
-
-#' @title Sign Depth Test
+#' @title The K-sign depth test
 #'
 #' @description
-#' Performs a robust test whether a statistical model fits to some data.
+#' Performs the robust K-sign depth test, which tests whether a statistical model
+#' fits to some data.
 #'
 #' @param x [\code{numeric}]\cr vector of residuals.
-#' @param K [\code{integer(1)}]\cr parameter of the Sign Depth.
+#' @param K [\code{integer(1)}]\cr parameter of the K-sign depth.
 #' @param formula [\code{formula}]\cr a formula of the form \code{lhs ~ rhs} where
-#' lhs is a numeric giving the target variable and rhs are the influencing variables .
+#' lhs is a numeric giving the target variable and rhs are the explanatory variables .
 #' @param data [\code{data.frame}]\cr a data frame containing the variables in the formula.
-#' @param params [\code{numeric}]\cr a parameter vector for the null-hypotheses.
+#' @param params [\code{numeric}]\cr a parameter vector for the null-hypothesis.
 #' @param ... [any] further arguments in the formula-method. Arguments are passed
 #' to the \code{multiSorting}-function.
 #'
@@ -22,16 +22,16 @@
 #'
 #' At the moment only linear models for the formula interface are supported!
 #'
-#' The parameter K of the Sign Depth has to be a natural number. Currently
-#' only \eqn{K = 2, 3, 4, 5} is supported!
+#' The parameter K of the sign depth has to be a natural number. Currently
+#' only \eqn{K = 2, 3, 4, 5} are supported!
 #'
 #' The quantiles used for calculating the p-value of the test are simulation based.
 #' For more information see \code{\link{qdepth}}.
 #'
 #' @return A list with class \code{"htest"} containing the following components:
 #'\describe{
-#'  \item{\code{statistic}}{the value of the depth.}
-#'  \item{\code{parameter}}{the K of the Sign Depth.}
+#'  \item{\code{statistic}}{the value of the K-sign depth.}
+#'  \item{\code{parameter}}{the parameter K of the K-sign depth.}
 #'  \item{\code{p.value}}{the p-value for the test.}
 #'  \item{\code{alternative}}{a character string describing the alternative hypothesis.}
 #'  \item{\code{data.name}}{a character string giving the name of the data.}

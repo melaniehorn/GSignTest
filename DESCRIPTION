@@ -1,18 +1,19 @@
 Package: GSignTest
 Type: Package
 Title: Robust Tests for Regression-Parameters via Sign Depth
-Version: 1.0.5
+Version: 1.0.6
 Author: Melanie Horn
 Maintainer: Melanie Horn <mhorn@statistik.tu-dortmund.de>
-Date: 2020-01-20
-Description: The Simplicial Depth is a robust measure of fitness for 
-  a regression model. One can use it also for testing whether a given 
-  parameter vector of a regression model fits to some data. The Sign 
-  Depth needs a sorting of the data, which can be difficult with 
-  multivariate data. This package provides different strategies for
-  sorting multivariate data (random, nondominated-sorting, sorting 
-  via scalarization, shortest hamiltonian path, ...) and calculates 
-  robust tests for regression-parameters via Sign Depth.
+Date: 2021-02-21
+Description: The sign depth and sign depth test can be used for testing robustly
+    on parameter vectors of regression models. For this, the sign depth test
+    needs an order of the residuals. While there is an inherent order in the
+    case of simple regression or, for example, time-series, there is no inherent
+    order in the case of multiple regression. For this, the design vectors of
+    a data set have to be ordered. This package provides 13 different ordering
+    strategies as well as functions for calculating the sign depth, the sign
+    depth test, the simplified sign depth and two classical tests for regression
+    models, namely the sign test and the F-test.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

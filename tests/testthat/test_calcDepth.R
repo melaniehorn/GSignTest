@@ -1,6 +1,8 @@
 library(GSignTest)
 context("calcDepth")
 
+set.seed(2306)
+
 test_that("general", {
   expect_lt(calcDepth(rnorm(10), 2), 1)
   expect_gte(calcDepth(rnorm(10), 2), 0)
