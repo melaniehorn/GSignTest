@@ -30,11 +30,7 @@ calcDepth_def <- function(res, k) {
     .Call(`_GSignTest_calcDepth_def`, res, k)
 }
 
-prod_one_factor <- function(residuals, K, L) {
-    .Call(`_GSignTest_prod_one_factor`, residuals, K, L)
-}
-
-asymp_K_depth <- function(residuals, K) {
-    .Call(`_GSignTest_asymp_K_depth`, residuals, K)
+RcppCalcKDepthBlock <- function(resSigns, K) {
+    .Call(`_GSignTest_RcppCalcKDepthBlock`, resSigns, K)
 }
 

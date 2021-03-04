@@ -43,5 +43,5 @@ test_that("equality", {
 
 test_that("warning", {
   expect_warning(calcDepth(rnorm(10), 3, linear = FALSE))
-  expect_warning(calcDepth(rnorm(10), 6))
+  expect_warning(calcDepth(rnorm(10), 6, linear = FALSE))
 })

@@ -54,28 +54,15 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// prod_one_factor
-double prod_one_factor(NumericVector residuals, int K, int L);
-RcppExport SEXP _GSignTest_prod_one_factor(SEXP residualsSEXP, SEXP KSEXP, SEXP LSEXP) {
+// RcppCalcKDepthBlock
+double RcppCalcKDepthBlock(NumericVector resSigns, int K);
+RcppExport SEXP _GSignTest_RcppCalcKDepthBlock(SEXP resSignsSEXP, SEXP KSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type residuals(residualsSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type resSigns(resSignsSEXP);
     Rcpp::traits::input_parameter< int >::type K(KSEXP);
-    Rcpp::traits::input_parameter< int >::type L(LSEXP);
-    rcpp_result_gen = Rcpp::wrap(prod_one_factor(residuals, K, L));
-    return rcpp_result_gen;
-END_RCPP
-}
-// asymp_K_depth
-double asymp_K_depth(NumericVector residuals, int K);
-RcppExport SEXP _GSignTest_asymp_K_depth(SEXP residualsSEXP, SEXP KSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type residuals(residualsSEXP);
-    Rcpp::traits::input_parameter< int >::type K(KSEXP);
-    rcpp_result_gen = Rcpp::wrap(asymp_K_depth(residuals, K));
+    rcpp_result_gen = Rcpp::wrap(RcppCalcKDepthBlock(resSigns, K));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -85,8 +72,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_GSignTest_signC", (DL_FUNC) &_GSignTest_signC, 1},
     {"_GSignTest_calc", (DL_FUNC) &_GSignTest_calc, 4},
     {"_GSignTest_calcDepth_def", (DL_FUNC) &_GSignTest_calcDepth_def, 2},
-    {"_GSignTest_prod_one_factor", (DL_FUNC) &_GSignTest_prod_one_factor, 3},
-    {"_GSignTest_asymp_K_depth", (DL_FUNC) &_GSignTest_asymp_K_depth, 2},
+    {"_GSignTest_RcppCalcKDepthBlock", (DL_FUNC) &_GSignTest_RcppCalcKDepthBlock, 2},
     {NULL, NULL, 0}
 };
 

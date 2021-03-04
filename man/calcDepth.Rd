@@ -4,7 +4,7 @@
 \alias{calcDepth}
 \title{Calculating the K-sign depth}
 \usage{
-calcDepth(res, K, transform = FALSE, linear = TRUE, exact = TRUE)
+calcDepth(res, K, transform = FALSE, linear = TRUE)
 }
 \arguments{
 \item{res}{[\code{numeric}]\cr
@@ -19,14 +19,7 @@ so that the distribution of the K-sign depth converges for large number
 of data points N? Default is \code{FALSE}.}
 
 \item{linear}{[\code{logical(1)}]\cr
-Should the depth be calculated in linear time complexity? At the moment, for exact
-results this method is available only for K = 2, 3, 4, 5. Default is \code{TRUE}.}
-
-\item{exact}{[\code{logical(1)}]\cr
-Should the depth be calculated exactly? If \code{FALSE}, terms of scale
-o(1) will ne ignored. If \code{linear} is \code{FALSE} always the exact
-result is computed, independent of the value of \code{exact}. Default is
-\code{TRUE}.}
+Should the depth be calculated in linear time complexity? Default is \code{TRUE}.}
 }
 \value{
 [\code{numeric(1)}] the calculated K-sign depth of \code{res}.
@@ -44,8 +37,8 @@ calcDepth(rnorm(10), 3)
 
 # Difference of exact and approximative implementation:
 res <- rnorm(100)
-calcDepth(res, 4, exact = TRUE)
-calcDepth(res, 4, exact = FALSE)
+calcDepth(res, 4)
+calcDepth(res, 4, transform = TRUE)
 }
 \references{
 Horn M. Sign depth for parameter tests in multiple regression.
