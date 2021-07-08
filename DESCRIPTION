@@ -1,10 +1,10 @@
 Package: GSignTest
 Type: Package
 Title: Robust Tests for Regression-Parameters via Sign Depth
-Version: 1.0.7
+Version: 1.0.8
 Author: Melanie Horn
 Maintainer: Melanie Horn <mhorn@statistik.tu-dortmund.de>
-Date: 2021-03-04
+Date: 2021-07-08
 Description: The sign depth and sign depth test can be used for testing robustly
     on parameter vectors of regression models. For this, the sign depth test
     needs an order of the residuals. While there is an inherent order in the

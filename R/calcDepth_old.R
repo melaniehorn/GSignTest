@@ -1,8 +1,8 @@
-#' @title Calculating the K-sign depth
+#' @title Calculating the K-sign depth (deprecated)
 #'
 #' @description
-#' \code{calcDepth} calculates the K-sign depth of a given
-#' vector of residuals.
+#' \code{calcDepth_old} calculates the K-sign depth of a given
+#' vector of residuals in time complexity O(N^K)
 #'
 #' @param res [\code{numeric}]\cr
 #'   numeric vector of residuals
@@ -14,18 +14,17 @@
 #'   of data points N? Default is \code{FALSE}.
 #' @return [\code{numeric(1)}] the calculated K-sign depth of \code{res}.
 #'
-#' @note The implementation is based on a work of Dennis Malcherczyk.
 #'
 #' @references
-#' Malcherczyk, D. (2021+). K-sign depth: Asymptotic distribution, efficient
-#' computation and applications. Dissertation in preparation.
-#'
+#' Horn M. Sign depth for parameter tests in multiple regression.
+#' TU Dortmund University; 2021.
 #'
 #' @examples
-#' calcDepth(rnorm(10), 3)
-#' calcDepth(runif(100, -1, 1), 4, transform = TRUE)
+#' calcDepth_old(rnorm(10), 3)
+#' calcDepth_old(runif(100, -1, 1), 4, transform = TRUE)
+#'
 #' @export
-calcDepth <- function(res, K, transform = FALSE) {
+calcDepth_old <- function(res, K, transform = FALSE) {
   assert_numeric(res, min.len = K, any.missing = FALSE)
   assert_integerish(K, lower = 2, len = 1, any.missing = FALSE)
   assert_logical(transform, any.missing = FALSE, len = 1)
@@ -34,14 +33,14 @@ calcDepth <- function(res, K, transform = FALSE) {
   N <- length(res)
   M <- length(res2)
 
-  signRes <- sign(res2)
-  if (transform) {
-    return((RcppCalcKDepthBlock(signRes, K = K) / choose(M, K) - (1/2)^(K-1)) * M)
+
+  warning("It is recommended to use the linear implementation in calcDepth()!")
+  if (N == M) {
+    erg <- calcDepth_def(res, K)
   } else {
-    return(RcppCalcKDepthBlock(signRes, K = K) / choose(M, K))
+    erg <- (choose(M, K) * calcDepth_def(res2, K) + choose(N - M, K)) / choose(N, K)
   }
-  if (M != N) {
-    erg <- (choose(M, K) * erg + choose(N - M, K)) / choose(N, K)
-  }
+  if (transform) erg <- length(res) * (erg - (1/2)^(K - 1))
+
   return(erg)
 }

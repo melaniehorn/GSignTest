@@ -143,3 +143,64 @@ double RcppCalcKDepthBlock(NumericVector resSigns, int K) {
   return value;
 
 }
+
+
+// prod_one_factor: helper-function: Will be needed for calculation of the
+//                  exact depth in linear runtime
+// input: residuals: Vector of residuals; K: Parameter of the K Sign Depth;
+//        L: Parameter
+// output: Needed result
+// [[Rcpp::export]]
+double prod_one_factor(NumericVector residuals, int K, int L) {
+  int N = residuals.size();
+  IntegerVector S = sign(residuals);
+  IntegerVector M(N + 1);
+  M[0] = 0;
+  for(int i = 1; i <= N; i++) {
+    int temp = 0;
+    if(residuals[i-1] < 0) temp = 1;
+    M[i] = M[i-1] + temp;
+  }
+  double erg = 0;
+  for(int j = L; j <= N - K + L; j++) {
+    double p1 = 0;
+    for(int k1 = 0; k1 <= L - 1; k1++) {
+      p1 += pow(-1, k1) * Rf_choose(M[j-1], k1) * Rf_choose(j - M[j-1] - 1, L - 1 - k1);
+    }
+    double p2 = 0;
+    for(int k2 = 0; k2 <= K - L; k2++) {
+      p2 += pow(-1, k2) * Rf_choose(M[N] - M[j], k2) * Rf_choose(N - j - M[N] + M[j], K - L - k2);
+    }
+    erg += j * S[j-1] * p1 * p2;
+  }
+  return erg;
+}
+
+
+// asym_K_depth: helper-function: Calculates the transformed approximative
+//               K Sign Depth
+// input: residuals: Vector of residuals; K: Parameter of the K Sign Depth
+// output: approximative transformed K Sign Depth
+// [[Rcpp::export]]
+double asymp_K_depth(NumericVector residuals, int K) {
+  int N = residuals.size();
+  IntegerVector res = sign(residuals);
+  NumericMatrix S(N+1, K-1);
+  for(int i = 0; i < K - 1; i++) S(0, i) = 0;
+  for(int j = 0; j <= K - 2; j++) {
+    for(double k = 1; k <= N; k++)
+      S(k, j) = S(k-1, j) + pow(k / N, j) * res[k-1];
+  }
+  double erg = 0;
+  for(int j = 0; j <= K - 2; j++) {
+    double tmp = 0;
+    for(double n = 2; n <= N; n++) {
+      tmp += pow(0.5 - n/N, K - 2 - j) * res[n-1] * S(n-1, j);
+    }
+    erg += Rf_choose(K - 2, j) * tmp;
+  }
+  double tmp2 = 1;
+  for(double i = N - K + 1; i <= N; i++) tmp2 *= i;
+  erg = - K * (K - 1) * pow(N, K - 1) / (2 * tmp2) * erg;
+  return erg;
+}
