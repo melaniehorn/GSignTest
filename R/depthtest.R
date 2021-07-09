@@ -68,8 +68,13 @@ depth.test.default <- function(x, K, ...) {
   stat <- calcDepth(x, K)
 
   assign("dat", get(paste0("quants", K)))
-  n <- min(length(x), 100)
-  tmp <- which(dat[, as.character(n)] > stat)
+  if(length(x) <= 100){
+    n <- length(x)
+    tmp <- which(dat[, as.character(n)] > stat)
+  } else {
+    n <- 100
+    tmp <- which(n * (dat[, as.character(n)] - 0.5^(K-1)) > length(x) * (stat - 0.5^(K-1)))
+  }
   if(length(tmp) == 0) {
     p.value <- 1
   } else {
@@ -117,8 +122,13 @@ depth.test.formula <- function(formula, data, params, K, ...) {
   stat <- calcDepth(res, K)
 
   assign("dat", get(paste0("quants", K)))
-  n <- min(length(res), 100)
-  tmp <- which(dat[, as.character(n)] > stat)
+  if(length(res) <= 100){
+    n <- length(res)
+    tmp <- which(dat[, as.character(n)] > stat)
+  } else {
+    n <- 100
+    tmp <- which(n * (dat[, as.character(n)] - 0.5^(K-1)) > length(res) * (stat - 0.5^(K-1)))
+  }
   if(length(tmp) == 0) {
     p.value <- 1
   } else {
